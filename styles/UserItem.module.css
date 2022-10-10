@@ -1,0 +1,9 @@
+.itemContainer {
+  margin: 30px 10px;
+  min-height: 10rem;
+  width: 70%;
+  padding: 20px;
+  border-radius: 20px;
+  background: #e0e0e0;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
