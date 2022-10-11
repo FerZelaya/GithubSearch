@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { ReactElement, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import UserSearch from "../components/UserSearch/UserSearch";
@@ -29,7 +29,7 @@ Home.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const octokit = new Octokit({
     auth: process.env.GITHUB_KEY,
   });

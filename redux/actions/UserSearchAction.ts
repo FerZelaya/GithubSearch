@@ -44,7 +44,7 @@ export const userInputSearch = Object.assign(
   (userToSearch: string) =>
     async (dispatch: ThunkDispatch<RootState, {}, Action>) => {
       try {
-        dispatch(userInitialSearch.start());
+        dispatch(userInputSearch.start());
         const octokit = new Octokit({
           auth: process.env.GITHUB_KEY,
         });
@@ -57,9 +57,9 @@ export const userInputSearch = Object.assign(
         );
         const { items } = data;
 
-        dispatch(userInitialSearch.success(items));
+        dispatch(userInputSearch.success(items));
       } catch (error: any) {
-        dispatch(userInitialSearch.fail(error as Error));
+        dispatch(userInputSearch.fail(error as Error));
       }
     },
   {
