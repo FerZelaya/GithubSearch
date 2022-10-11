@@ -19,10 +19,11 @@
 .navbarItem {
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   padding: 0;
   align-items: center;
-  height: 5rem;
+  height: 6rem;
   color: #fff;
   text-decoration: none;
   margin: 20px 0;

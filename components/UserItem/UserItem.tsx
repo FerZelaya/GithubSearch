@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { RootState } from "../../redux/store";
 import styles from "../../styles/UserItem.module.css";
 import { ItemsResults } from "../../types/types";
 

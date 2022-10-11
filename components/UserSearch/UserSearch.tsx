@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { useAppSelector } from "../../hooks/useReduxHooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/useReduxHooks";
+import { userInputSearch } from "../../redux/actions/UserSearchAction";
 import { RootState } from "../../redux/store";
 import styles from "../../styles/UserSearch.module.css";
 import { UserSearchResult } from "../../types/types";
 import UserItem from "../UserItem/UserItem";
 
-interface UsrrSearchProps {
+interface UserSearchProps {
   response: UserSearchResult;
 }
 
-const UserSearch: React.FC<UsrrSearchProps> = ({ response }) => {
+const UserSearch: React.FC<UserSearchProps> = () => {
+  const dispatch = useAppDispatch();
+  const [userInput, setUserInput] = useState<string>("");
+
+  const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserInput(e.target.value);
+  };
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(userInputSearch(userInput));
+  };
+
   const userSearchState = useAppSelector(
     (state: RootState) => state.userSearch,
   );
@@ -17,12 +30,7 @@ const UserSearch: React.FC<UsrrSearchProps> = ({ response }) => {
   return (
     <div className={styles.container}>
       <div className={styles.searchContainer}>
-        <form
-          className="row "
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
+        <form className="row " onSubmit={(e) => onSubmit(e)}>
           <div className="input-group col">
             <span className="input-group-text" id="basic-addon1">
               @
@@ -33,6 +41,7 @@ const UserSearch: React.FC<UsrrSearchProps> = ({ response }) => {
               placeholder="Username"
               aria-label="Username"
               aria-describedby="basic-addon1"
+              onChange={(e) => onTextChange(e)}
             />
           </div>
 
@@ -43,17 +52,12 @@ const UserSearch: React.FC<UsrrSearchProps> = ({ response }) => {
           </div>
         </form>
       </div>
-      {userSearchState.users &&
-        userSearchState.users.map((user) => {
-          return (
-            <div
-              key={user.id}
-              className="row d-flex justify-content-center p-0"
-            >
-              <UserItem data={user} />
-            </div>
-          );
-        })}
+      <div className="row d-flex justify-content-center p-0">
+        {userSearchState.users &&
+          userSearchState.users.map((user) => {
+            return <UserItem key={user.id} data={user} />;
+          })}
+      </div>
     </div>
   );
 };

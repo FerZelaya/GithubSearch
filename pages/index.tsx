@@ -4,8 +4,9 @@ import Layout from "../components/Layout/Layout";
 import UserSearch from "../components/UserSearch/UserSearch";
 import { NextPageWithLayout, UserSearchResult } from "../types/types";
 import { Octokit } from "@octokit/rest";
-import { useAppDispatch } from "../hooks/useReduxHooks";
+import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks";
 import { userInitialSearch } from "../redux/actions/UserSearchAction";
+import { RootState } from "../redux/store";
 
 interface HomeProps {
   response: UserSearchResult;
@@ -13,9 +14,12 @@ interface HomeProps {
 
 const Home: NextPageWithLayout<HomeProps> = ({ response }) => {
   const dispatch = useAppDispatch();
+  const userSearchState = useAppSelector(
+    (state: RootState) => state.userSearch,
+  );
 
   useEffect(() => {
-    dispatch(userInitialSearch());
+    if (userSearchState.users.length === 0) dispatch(userInitialSearch());
   }, []);
 
   return <UserSearch response={response} />;
