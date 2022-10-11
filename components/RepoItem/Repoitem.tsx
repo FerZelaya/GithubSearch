@@ -18,7 +18,7 @@ const RepoItem: React.FC<RepoItemProps> = ({ data }) => {
             <Image
               width={75}
               height={75}
-              src={data.owner.avatar_url ?? ""}
+              src={data.owner?.avatar_url ?? ""}
               className="rounded-circle"
               alt="User"
             />
