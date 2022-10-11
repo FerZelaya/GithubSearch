@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useAppSelector } from "../../hooks/useReduxHooks";
+import { RootState } from "../../redux/store";
 import styles from "../../styles/UserSearch.module.css";
 import { UserSearchResult } from "../../types/types";
 import UserItem from "../UserItem/UserItem";
@@ -8,9 +10,10 @@ interface UsrrSearchProps {
 }
 
 const UserSearch: React.FC<UsrrSearchProps> = ({ response }) => {
-  const [userResult, setUserResult] = useState();
+  const userSearchState = useAppSelector(
+    (state: RootState) => state.userSearch,
+  );
 
-  useEffect(() => {}, []);
   return (
     <div className={styles.container}>
       <div className={styles.searchContainer}>
@@ -40,7 +43,17 @@ const UserSearch: React.FC<UsrrSearchProps> = ({ response }) => {
           </div>
         </form>
       </div>
-      <UserItem />
+      {userSearchState.users &&
+        userSearchState.users.map((user) => {
+          return (
+            <div
+              key={user.id}
+              className="row d-flex justify-content-center p-0"
+            >
+              <UserItem data={user} />
+            </div>
+          );
+        })}
     </div>
   );
 };

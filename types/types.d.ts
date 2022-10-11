@@ -8,7 +8,7 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 export interface UserSearchState {
   users: ItemsResults[];
   loading: boolean;
-  error?: boolean;
+  error?: Error | boolean | string;
 }
 
 export interface UserData {
@@ -19,14 +19,13 @@ export interface UserData {
   profile_url: string;
 }
 
-export interface UserSearchAction extends BaseAction, UserSearchResult {}
+export interface UserSearchAction extends BaseAction, Data {}
 
 export interface UserSearchResult {
   data: Data;
 }
 
 interface Data {
-  incomplete_results: boolean;
   items: ItemsResults[];
 }
 

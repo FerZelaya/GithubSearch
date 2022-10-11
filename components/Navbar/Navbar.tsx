@@ -13,12 +13,12 @@ const Navbar: React.FC = () => {
       <ul className={styles.navbarList}>
         <li className={styles.navbarItem}>
           <Link className={styles.navLink} href={"/"}>
-            <FontAwesomeIcon icon={faUser} />
+            <FontAwesomeIcon icon={faUser} fontSize={50} />
           </Link>
         </li>
         <li className={styles.navbarItem}>
           <Link href={"/repo-search"}>
-            <FontAwesomeIcon icon={faCloud} />
+            <FontAwesomeIcon icon={faCloud} fontSize={50} />
           </Link>
         </li>
       </ul>

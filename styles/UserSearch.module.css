@@ -4,12 +4,13 @@
   background: #e0e0e0;
   justify-content: flex-start;
   flex-direction: column;
-  align-items: center;
+
   padding: 30px;
   overflow-y: scroll;
 }
 
 .searchContainer {
+  max-width: 26rem;
   padding: 20px;
   border-radius: 20px;
   background: #e0e0e0;

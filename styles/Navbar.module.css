@@ -19,6 +19,8 @@
 .navbarItem {
   width: 100%;
   display: flex;
+  justify-content: center;
+  padding: 0;
   align-items: center;
   height: 5rem;
   color: #fff;

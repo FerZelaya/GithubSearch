@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { NextPageWithLayout } from "../types/types";
 import Head from "next/head";
 import Script from "next/script";
+import { ToastContainer } from "react-toastify";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "../redux/store";
@@ -41,6 +42,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           />
           <Component {...pageProps} />
         </>
+        <ToastContainer />
       </PersistGate>
     </Provider>,
   );

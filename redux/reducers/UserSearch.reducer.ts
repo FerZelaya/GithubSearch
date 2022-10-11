@@ -10,10 +10,7 @@ const userSearchReducer = (
   state = initialState,
   action: UserSearchAction = {
     type: ActionTypes.DEFAULT_TYPE,
-    data: {
-      incomplete_results: false,
-      items: [],
-    },
+    items: [],
   },
 ): UserSearchState => {
   switch (action.type) {
@@ -27,7 +24,7 @@ const userSearchReducer = (
       return {
         ...state,
         loading: false,
-        users: action.data.items,
+        users: action.items,
         error: false,
       };
     case ActionTypes.USER_SEARCH_FAIL:
@@ -35,7 +32,7 @@ const userSearchReducer = (
         ...state,
         loading: false,
         users: [],
-        error: true,
+        error: action.error,
       };
 
     default:
