@@ -38,8 +38,8 @@ const RepoSearch: React.FC<ReposSearchProps> = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Username"
-              aria-label="Username"
+              placeholder="Repository"
+              aria-label="Repository"
               aria-describedby="basic-addon1"
               onChange={(e) => onTextChange(e)}
             />

@@ -52,7 +52,7 @@ const UserSearch: React.FC<UserSearchProps> = () => {
           </div>
         </form>
       </div>
-      <div className="row d-flex justify-content-center p-0">
+      <div className="row d-flex w-100 justify-content-center p-0">
         {userSearchState.users &&
           userSearchState.users.map((user) => {
             return <UserItem key={user.id} data={user} />;

@@ -33,13 +33,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const octokit = new Octokit({
     auth: process.env.GITHUB_KEY,
   });
-  const response: RepoSearchResult = await octokit.request(
-    "GET /search/repositories",
-    {
-      q: "test",
-      sort: "stars",
-    },
-  );
+  const response = await octokit.request("GET /search/repositories", {
+    q: "test",
+    sort: "stars",
+  });
 
   return {
     props: { response },

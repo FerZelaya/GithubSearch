@@ -61,6 +61,7 @@ interface RepoItemsResults {
   forks_count: number;
   language: string | null;
   html_url: string;
+  owner: { avatar_url: string | null };
 }
 
 interface BaseAction {
