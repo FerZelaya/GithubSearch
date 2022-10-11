@@ -1,5 +1,5 @@
 import { Octokit } from "@octokit/rest";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import { ReactElement, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import ReposSearch from "../components/ReposSearch/ReposSearch";
@@ -29,7 +29,7 @@ RepoSearch.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   const octokit = new Octokit({
     auth: process.env.GITHUB_KEY,
   });

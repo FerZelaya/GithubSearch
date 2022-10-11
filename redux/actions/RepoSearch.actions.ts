@@ -15,7 +15,7 @@ export const repoInitialSearch = Object.assign(
       const { data }: RepoSearchResult = await octokit.request(
         "GET /search/repositories",
         {
-          q: "test",
+          q: "luuna-tech/test",
           sort: "stars",
         },
       );
