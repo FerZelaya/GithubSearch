@@ -19,13 +19,7 @@ const persistedReducer = persistReducer(persistConfig, reducers);
 
 export const store = createStore(
   persistedReducer,
-  compose(
-    applyMiddleware(thunk),
-    typeof window === "object" &&
-      typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== "undefined"
-      ? window.__REDUX_DEVTOOLS_EXTENSION__()
-      : (f: any) => f,
-  ),
+  compose(applyMiddleware(thunk)),
 );
 
 export const persistor = persistStore(store);
