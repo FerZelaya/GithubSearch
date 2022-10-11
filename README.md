@@ -2,7 +2,7 @@
 
 To run this app locally, you need:
 
-- Create a .env file with "GITHUB_KEY" variable.
+- Create a .env file with "GITHUB_KEY" variable. Generate this token in Github > Settings > Developer Settings > Personal Access Tokens
 - Then:
 
 ```bash
